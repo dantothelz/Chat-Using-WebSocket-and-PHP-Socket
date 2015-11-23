@@ -40,8 +40,8 @@ $user_colour = array_rand($colours);
 <script language="javascript" type="text/javascript">  
 $(document).ready(function(){
 	//create a new WebSocket object.
-	var wsUri = "ws://pride.duleone.com:9000/demo/server.php";
-	// var wsUri = "ws://localhost:9000/demo/server.php";
+	var wsUri = "ws://pride.duleone.com:8080/demo/server.php";
+	// var wsUri = "ws://localhost:8080/demo/server.php";
 	websocket = new WebSocket(wsUri); 
 	
 	websocket.onopen = function(ev) { // connection is open 
@@ -69,7 +69,7 @@ $(document).ready(function(){
 		};
 		//convert and send data to server
 		websocket.send(JSON.stringify(msg));
-		
+
 		$('#message').val(''); //reset text
 		return false;
 	});
