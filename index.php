@@ -41,6 +41,7 @@ $user_colour = array_rand($colours);
 $(document).ready(function(){
 	//create a new WebSocket object.
 	var wsUri = "ws://pride.duleone.com:9000/demo/server.php";
+	// var wsUri = "ws://localhost:9000/demo/server.php";
 	websocket = new WebSocket(wsUri); 
 	
 	websocket.onopen = function(ev) { // connection is open 
@@ -68,6 +69,7 @@ $(document).ready(function(){
 		};
 		//convert and send data to server
 		websocket.send(JSON.stringify(msg));
+		return false;
 	});
 	
 	//#### Message received from server?
@@ -92,15 +94,19 @@ $(document).ready(function(){
 	
 	websocket.onerror	= function(ev){$('#message_box').append("<div class=\"system_error\">Error Occurred - "+ev.data+"</div>");}; 
 	websocket.onclose 	= function(ev){$('#message_box').append("<div class=\"system_msg\">Connection Closed</div>");}; 
+
+
 });
 </script>
 <div class="chat_wrapper">
-<div class="message_box" id="message_box"></div>
-<div class="panel">
-<input type="text" name="name" id="name" placeholder="Your Name" maxlength="10" style="width:20%"  />
-<input type="text" name="message" id="message" placeholder="Message" maxlength="80" style="width:60%" />
-<button id="send-btn">Send</button>
-</div>
+	<div class="message_box" id="message_box"></div>
+	<div class="panel">
+		<form id='input'>
+			<input type="text" name="name" id="name" placeholder="Your Name" maxlength="10" style="width:20%"  />
+			<input type="text" name="message" id="message" placeholder="Message" maxlength="80" style="width:60%" />
+			<button id="send-btn">Send</button>
+		</form>
+	</div>
 </div>
 
 </body>
