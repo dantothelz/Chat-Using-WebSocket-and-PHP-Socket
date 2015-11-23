@@ -12,3 +12,10 @@ Running Server :
 
 @Tutorial : http://www.sanwebe.com/2013/05/chat-using-websocket-php-socket
 @License : http://opensource.org/licenses/MIT
+
+
+@TODO:
+1. Fix bug where receiving a message clears your input box.
+2. Add AutoScroll
+3. Add Timestamps to messages 
+4. Extend message size limit

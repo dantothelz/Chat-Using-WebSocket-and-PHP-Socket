@@ -63,12 +63,14 @@ $(document).ready(function(){
 		
 		//prepare json data
 		var msg = {
-		message: mymessage,
-		name: myname,
-		color : '<?php echo $colours[$user_colour]; ?>'
+			message: mymessage,
+			name: myname,
+			color : '<?php echo $colours[$user_colour]; ?>',
 		};
 		//convert and send data to server
 		websocket.send(JSON.stringify(msg));
+		
+		$('#message').val(''); //reset text
 		return false;
 	});
 	
@@ -88,8 +90,6 @@ $(document).ready(function(){
 		{
 			$('#message_box').append("<div class=\"system_msg\">"+umsg+"</div>");
 		}
-		
-		$('#message').val(''); //reset text
 	};
 	
 	websocket.onerror	= function(ev){$('#message_box').append("<div class=\"system_error\">Error Occurred - "+ev.data+"</div>");}; 
